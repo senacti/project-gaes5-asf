@@ -37,7 +37,10 @@ Garantizar que el sistema de información de la Serviteca Auto Speed Fierro cump
 # Integrantes 👥
 
 -Juan David Mora
+
 -Elian Ortiz Cruz
+
 -Jonathan Mahecha Hita
+
 -Fabian Mancipe Salgado
 
