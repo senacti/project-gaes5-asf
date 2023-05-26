@@ -5,7 +5,8 @@ project-gaes5-asf created by GitHub Classroom
 ## Desarrollar un sistema de información web que permita el reemplazo de los procesos manuales actuales por una solución más eficiente, fiable e intuitiva. El sistema proporcionará una plataforma integral para la gestión de los procesos, permitiendo una mejor organización y control de la información, así como una mayor agilidad en la toma de decisiones. Además, el sistema permitirá la semi-automatización de tareas que antes se realizaban de forma manual, reduciendo errores y mejorando la calidad del servicio ofrecido a los usuarios.
 
 # Objetivos Especificos 🤖
-##Proveedores: Almacenar las cotizaciones e información de los distintos proveedores con el fin de facilitar la comparación de estos mediante un ranking de los mismos. Además de crear órdenes de compra directamente, según el stock disponible de cada insumo.
+
+Proveedores: Almacenar las cotizaciones e información de los distintos proveedores con el fin de facilitar la comparación de estos mediante un ranking de los mismos. Además de crear órdenes de compra directamente, según el stock disponible de cada insumo.
 
 Inventario: Facilitar el control y el  manejo de los productos en   bodega.
 
