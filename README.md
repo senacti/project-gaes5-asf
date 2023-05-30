@@ -20,7 +20,7 @@ Ventas: Gestionar mejor los diferentes servicios y/o productos así mismo gestio
 
 # planteamiento del problema 👽
 
-Los procesos como el de agendamiento de citas, la compra a proveedores, el manejo de inventarios, el sistema de garantías y las ventas dentro la serviteca; se manejan de forma manual y la gestión de estos se sigue llevando en papel. Todo esto toma mucho tiempo y afecta directamente a la satisfacción de los clientes y por tanto a la rentabilidad del negocio.
+Los proceso como el de agendamiento de citas, la compra a proveedores, el manejo de inventarios, el sistema de garantías y las ventas dentro la serviteca; se manejan de forma manual y la gestión de estos se sigue llevando en papel. Todo esto toma mucho tiempo y afecta directamente a la satisfacción de los clientes y por tanto a la rentabilidad del negocio.
 
 
 # Justificacion 🐸
