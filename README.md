@@ -1,4 +1,5 @@
 # project-gaes5-asf
+![logo de la empresa] 
 project-gaes5-asf created by GitHub Classroom
 
 # Objetivo General 👾
