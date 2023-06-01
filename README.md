@@ -1,6 +1,6 @@
 # project-gaes5-asf
-![logo de la empresa] 
-project-gaes5-asf created by GitHub Classroom
+![logo de la empresa](https://github.com/senauti/project-gaes5-asf/assets/133701335/2025b18a-bcaf-4590-b1f6-77a00104500a)
+
 
 # Objetivo General 👾
 
