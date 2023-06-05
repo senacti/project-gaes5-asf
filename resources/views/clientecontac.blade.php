@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Agendar</title>
+    <title>Contactos</title>
     <link rel="stylesheet" href="{{ asset('css/general.css') }}">
-    <script src="{{ asset('js/general.js') }}"></script>
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
@@ -68,40 +67,53 @@
             </li>
         </ul>
     </div>
+
     <section class="home-section">
         <div class="home-content">
             <i class='bx bx-menu'></i>
-            <span class="text">Calendario</span>
+            <span class="text">Contactos</span>
         </div>
-        <div class="container">
-            <h1>Agendar Servicio</h1>
-            <form>
-                <label for="name">Nombre:</label>
-                <input type="text" id="name" name="name" pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+" required>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                <label for="type">Tipo de Servicio:</label>
-                <select id="type" name="type" required>
-                    <option value="">Seleccionar</option>
-                    <option value="Mantenimiento preventivo">Mantenimiento preventivo</option>
-                    <option value="Cambio de aceite y filtros">Cambio de aceite y
-                        filtros</option>
-                    <option value="Reparación de frenos">Reparación de frenos</option>
-                    <option value="Alineación y balanceo">Alineación y balanceo</option>
-                    <option value="Cambio de neumáticos">Cambio de neumáticos</option>
-                    <option value="Servicio de diagnóstico y reparación de
-                averías">Servicio de
-                        diagnóstico y reparación de
-                        averías</option>
-                </select>
-                <label for="date">Fecha:</label>
-                <input type="date" id="date" name="date" min="<?php echo date('Y-m-d'); ?>" required>
-                <label for="time">Hora:</label>
-                <input type="time" id="time" name="time" required>
-                <button type="submit">Agendar</button>
-            </form>
+        <div>
+            <div class="table-responsive">
+                <table class="table">
+                    <div class="alert alert-primary" role="alert">
+                        Lista de Funcionarios
+                    </div>
+                    <thead>
+                        <tr>
+                            <td class="bg-primary">#</td>
+                            <td class="bg-primary">Nombre</td>
+                            <td class="bg-primary">Apellido</td>
+                            <td class="bg-primary">Correo</td>
+                            <td class="bg-primary">Numero</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="bg-primary">1</td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@gmail.com</td>
+                            <td>322-256.....</td>
+                        </tr>
+                        <tr>
+                            <td class="bg-primary">2</td>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@gmail.com</td>
+                            <td>311-278.....</td>
+                        </tr>
+                        <tr>
+                            <td class="bg-primary">3</td>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@gmail.com</td>
+                            <td>311-256.....</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <script src="script.js"></script>
     </section>
     <script>
         let sidebar = document.querySelector(".sidebar");

@@ -96,9 +96,7 @@
                 <input type="password" id="contrasena" name="contrasena" required>
                 <div class="error" id="password-error"></div>
             </div>
-            <form method="post" action="registro.html">
-                <input type="submit" class="btn btn-primary" formaction="registro.html" value="Iniciar Sesión">
-            </form>
+            <a href="{{ route('clienteindex') }}" class="btn btn-primary">Iniciar Sesión</a>     
         </form>
         <br>
         <div class="d-grid gap-2 col-6 mx-auto">

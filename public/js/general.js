@@ -22,4 +22,5 @@ emailInput.addEventListener('input', () => {
 // Envío del formulario
 form.addEventListener('submit', (event) => {
     event.preventDefault();
-    const formData = new FormData
+    const formData = new FormData(form);
+});

@@ -32,3 +32,15 @@ Route::get('/registro', function () {
 Route::get('/clienteindex', function () {
     return view('clienteindex');
 })->name('clienteindex');
+
+Route::get('/clienteangendar', function () {
+    return view('clienteangendar');
+})->name('agendar');
+
+Route::get('/clientecontac', function () {
+    return view('clientecontac');
+})->name('contactos');
+
+Route::get('/clientecalificacion', function () {
+    return view('clientecalificacion');
+})->name('calificacion');
