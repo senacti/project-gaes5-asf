@@ -5,7 +5,8 @@ use App\Http\Controllers\Auth\LoginRegisterController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\generalcontroller;
 use App\Http\Controllers\CitaController;
-use App\Http\Controllers\PuntuacionController;
+use App\Http\Controllers\CommentController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +30,6 @@ Route::controller(LoginRegisterController::class)->group(function() {
     Route::post('/authenticate', 'authenticate')->name('authenticate');
     Route::get('/dashboard', 'dashboard')->name('dashboard');
     Route::post('/logout', 'logout')->name('logout');
-    Route::get('/users/pdf', 'generatePdf')->name('users.pdf');
 });
 
 Route::resource('task', TaskController::class);
@@ -46,7 +46,14 @@ Route::controller(CitaController::class)->group(function() {
 Route::post('/guardar', 'guardar')->name('guardar');
 Route::delete('/eliminar',  'eliminar')->name('eliminar');
 Route::get('/reagendar', 'reagendar')->name('reagendar');
+Route::get('/citas/pdf', 'citas/pdf')->name('citas.pdf');
 });
+
+
+Route::resource('comments', CommentController::class);
+Route::get('comments/generate-pdf', [CommentController::class, 'generatePDF'])->name('comments.generatePDF');
+Route::get('/comments/pdf', 'PdfController@generatePdf')->name('comments.pdf');
+
 
 
 

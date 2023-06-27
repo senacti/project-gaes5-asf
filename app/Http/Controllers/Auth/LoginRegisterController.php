@@ -124,28 +124,4 @@ class LoginRegisterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function generatePdf()
-    {
-        $users = User::all();
-
-        // Generate HTML for the PDF report
-        $html = '<h1>Users Report</h1>';
-
-        foreach ($users as $user) {
-            $html .= '<p>Name: ' . $user->name . '</p>';
-            $html .= '<p>Email: ' . $user->email . '</p>';
-            $html .= '<hr>';
-        }
-
-        // Instantiate Dompdf
-        $dompdf = new Dompdf();
-        $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'portrait');
-
-        // Render the PDF
-        $dompdf->render();
-
-        // Output the generated PDF to the browser
-        return $dompdf->stream('users_report.pdf');
-    }
 }

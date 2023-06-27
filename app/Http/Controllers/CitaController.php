@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+
 use Carbon\Carbon;
 use App\Models\Cita;
 use Illuminate\Http\Request;
-
+use Dompdf\Dompdf;
+use Illuminate\Support\Facades\View;
 class CitaController extends Controller
 {
     public function guardar(Request $request)
@@ -58,4 +60,20 @@ class CitaController extends Controller
 
         return view('reagendar', compact('cita'));
     }
+
+    public function generarPDF()
+{
+    $proximasCitas = Cita::whereDate('fecha', '>=', Carbon::now())->get();
+
+    $data = [
+        'proximasCitas' => $proximasCitas,
+    ];
+
+    $pdf = new Dompdf();
+    $pdf->loadHtml(View::make('pdf.citas', $data)->render());
+    $pdf->setPaper('A4', 'portrait');
+    $pdf->render();
+
+    return $pdf->stream('citas.pdf');
+}
 }

@@ -65,7 +65,8 @@
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
-                    <div class="bx bx-log-out" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"></div>
+                    <div class="bx bx-log-out"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"></div>
                 </div>
             </li>
         </ul>
@@ -91,7 +92,8 @@
                     <option value="Reparación de frenos">Reparación de frenos</option>
                     <option value="Alineación y balanceo">Alineación y balanceo</option>
                     <option value="Cambio de neumáticos">Cambio de neumáticos</option>
-                    <option value="Servicio de diagnóstico y reparación de averías">Servicio de diagnóstico y reparación de averías</option>
+                    <option value="Servicio de diagnóstico y reparación de averías">Servicio de diagnóstico y reparación
+                        de averías</option>
                 </select>
                 <label for="date">Fecha:</label>
                 <input type="date" id="date" name="date" min="{{ date('Y-m-d') }}" required>
@@ -100,35 +102,44 @@
                 <button type="submit">Agendar</button>
             </form>
 
-            @if(isset($proximasCitas) && count($proximasCitas) > 0)
-            <h2>Próximas citas:</h2>
-            <ul>
-                @foreach($proximasCitas as $cita)
-                <li>
-                    {{ $cita->fecha }} - {{ $cita->hora }}
+            @if (isset($proximasCitas) && count($proximasCitas) > 0)
+                <h2>Próximas citas:</h2>
+                <ul>
+                    @foreach ($proximasCitas as $cita)
+                        <li>
+                            {{ $cita->fecha }} - {{ $cita->hora }}
 
-                    <form action="{{ route('eliminar', ['id' => $cita->id]) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Eliminar</button>
-                    </form>
-                    
+                            <form action="{{ route('eliminar', ['id' => $cita->id]) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                            </form>
 
-                    <a href="{{ route('reagendar', $cita->id) }}" class="btn btn-primary">Reagendar</a>
-                </li>
-                @endforeach
-            </ul>
+
+                            <a href="{{ route('reagendar', $cita->id) }}" class="btn btn-primary">Reagendar</a>
+                        </li>
+                    @endforeach
+                </ul>
             @endif
+
+            @section('content')
+                <div class="container">
+                    <!-- Contenido de tu vista reagendar.blade.php -->
+
+                    <!-- Botón para generar el PDF -->
+                    <a href="{{ route('citas.pdf') }}" class="btn btn-primary">Generar PDF</a>
+                </div>
+            @endsection
         </div>
 
         <script>
-    let sidebar = document.querySelector(".sidebar");
-    let sidebarBtn = document.querySelector(".bx-menu");
-    console.log(sidebarBtn);
-    sidebarBtn.addEventListener("click", () => {
-        sidebar.classList.toggle("close");
-    });
-</script>
+            let sidebar = document.querySelector(".sidebar");
+            let sidebarBtn = document.querySelector(".bx-menu");
+            console.log(sidebarBtn);
+            sidebarBtn.addEventListener("click", () => {
+                sidebar.classList.toggle("close");
+            });
+        </script>
     </section>
 </body>
 

@@ -47,7 +47,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('puntuacion') }}">
+                <a href="{{ route('comments.index') }}">
                     <i class='bx bx-history'></i>
                     <span class="link_name">Califiquenos</span>
                 </a>

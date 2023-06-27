@@ -5,22 +5,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Califíquenos</title>
+    <title>Editar Comentario</title>
     <link rel="stylesheet" href="{{ asset('css/general.css') }}">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <style>
-        .rating {
+        .form-section {
             text-align: center;
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            margin-top: 20px;
         }
 
-        .comment-section,
-        .file-input-section {
-            text-align: center;
+        .form-section label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .form-section input[type="text"] {
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .form-section .btn-primary {
+            display: block;
+            padding: 6px 12px;
+            font-size: 14px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 10px;
+            width: 120px;
+            margin: 0 auto;
         }
     </style>
 </head>
@@ -29,7 +50,7 @@
     <div class="sidebar close">
         <div class="logo-details">
             <img src="{{ asset('img/Carro.jpg') }}" alt="">
-            <span class="logo_name">Don Speed's Fierro</span>
+            <span class="logo_name">Don-Speed's-Fierro</span>
         </div>
         <ul class="nav-links">
             <li>
@@ -39,7 +60,7 @@
                 </a>
             </li>
             <li>
-                <div class="icon-link">
+                <div class="iocn-link">
                     <a href="{{ route('agendar') }}">
                         <i class='bx bx-collection'></i>
                         <span class="link_name">Agendar</span>
@@ -47,10 +68,10 @@
                 </div>
             </li>
             <li>
-                <div class="icon-link">
+                <div class="iocn-link">
                     <a href="#">
                         <i class='bx bx-book-alt'></i>
-                        <span class="link_name">Servicios</span>
+                        <span class="link_name">servicios</span>
                     </a>
                 </div>
             </li>
@@ -63,14 +84,15 @@
             <li>
                 <a href="{{ route('puntuacion') }}">
                     <i class='bx bx-history'></i>
-                    <span class="link_name">Califíquenos</span>
+                    <span class="link_name">Califiquenos</span>
                 </a>
             </li>
             <li>
                 <div class="profile-details">
-                    <div class="profile-content"></div>
+                    <div class="profile-content">
+                    </div>
                     <div class="name-job">
-                        <div class="profile_name">Don Speed's Fierro</div>
+                        <div class="profile_name">Don Speeds Fierro</div>
                         <div class="job">Cliente</div>
                     </div>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -82,45 +104,23 @@
             </li>
         </ul>
     </div>
-
     <section class="home-section">
-        <div class="home-content">
-            <i class='bx bx-menu'></i>
-            <span class="text">Menú</span>
-        </div>
-        <div class="rating">
-            <input type="radio" id="star5" name="rating" value="5">
-            <label for="star5" title="Excelente">★</label>
-            <input type="radio" id="star4" name="rating" value="4">
-            <label for="star4" title="Muy bueno">★</label>
-            <input type="radio" id="star3" name="rating" value="3">
-            <label for="star3" title="Bueno">★</label>
-            <input type="radio" id="star2" name="rating" value="2">
-            <label for="star2" title="Regular">★</label>
-            <input type="radio" id="star1" name="rating" value="1">
-            <label for="star1" title="Malo">★</label>
-        </div>
-
-        <form>
-            <div class="comment-section">
-                <label for="comment">Comentario:</label>
-                <input type="text" id="comment" name="comment" pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+" required>
+        <form action="{{ route('comments.update', $comment) }}" method="POST">
+            @csrf
+            @method('PUT')
+            <div class="form-section">
+                <label for="comment">Edite el comentario:</label>
+                <input type="text" id="comment" name="comment" pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+" required
+                    value="{{ $comment->comment }}">
             </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="submit" class="btn btn-primary">Actualizar</button>
         </form>
-        <br>
-        <br>
-        <br>
-        <div class="file-input-section">
-            <label for="formFileMultiple" class="form-label">Ingrese un archivo si es necesario:</label>
-            <input class="form-control" type="file" id="formFileMultiple" multiple>
-        </div>
+
     </section>
 
     <script>
         let sidebar = document.querySelector(".sidebar");
         let sidebarBtn = document.querySelector(".bx-menu");
-        console.log(sidebarBtn);
         sidebarBtn.addEventListener("click", () => {
             sidebar.classList.toggle("close");
         });
