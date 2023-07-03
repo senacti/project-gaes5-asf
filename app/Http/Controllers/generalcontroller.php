@@ -6,10 +6,7 @@ use Illuminate\Http\Request;
 
 class generalcontroller extends Controller
 {
-    public function agendar()
-    {
-        return view('clienteagenda');
-    }
+   
 
     public function contactos()
     {

@@ -1,8 +1,6 @@
 /* Google Fonts Import Link */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-/* Menu desplegable */
-
 * {
   margin: 0;
   padding: 0;
@@ -319,89 +317,4 @@ img {
 * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-}
-
-body {
-  background: -webkit-gradient(linear, left top, right top, from(mediumpurple), to(lightsalmon));
-  background: -webkit-linear-gradient(left, mediumpurple, lightsalmon);
-  background: -o-linear-gradient(left, mediumpurple, lightsalmon);
-  background: linear-gradient(to right, mediumpurple, lightsalmon);
-}
-
-/* Agendamiento */
-.container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-}
-
-h1 {
-  margin-top: 0;
-}
-
-label {
-  display: block;
-  margin-bottom: 10px;
-}
-
-input,
-select {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.btn-yellow {
-  background-color: yellow;
-  color: #fff;
-}
-
-.btn-yellow:hover {
-  background-color: #ffcc00;
-  color: #fff;
-}
-
-
-button[type="submit"] {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  background-color: #4caf50;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button[type="submit"]:hover {
-  background-color: #3e8e41;
-}
-
-/* Califiquenos */
-.rating {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: center;
-}
-
-.rating input[type="radio"] {
-  display: none;
-}
-
-.rating label {
-  font-size: 30px;
-  color: #ddd;
-  padding: 5px;
-  cursor: pointer;
-}
-
-.rating label:hover,
-.rating label:hover~label,
-.rating input[type="radio"]:checked~label {
-  color: #FFD700;
 }

@@ -6,7 +6,8 @@ use App\Http\Controllers\TaskController;
 use App\Http\Controllers\generalcontroller;
 use App\Http\Controllers\CitaController;
 use App\Http\Controllers\CommentController;
-
+use App\Models\Garantia;
+use SebastianBergmann\Timer\ResourceUsageFormatter;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +24,7 @@ Route::get('/', function () {
     return view('skype');
 });
 
-Route::controller(LoginRegisterController::class)->group(function() {
+Route::controller(LoginRegisterController::class)->group(function () {
     Route::get('/register', 'register')->name('register');
     Route::post('/store', 'store')->name('store');
     Route::get('/login', 'login')->name('login');
@@ -32,59 +33,29 @@ Route::controller(LoginRegisterController::class)->group(function() {
     Route::post('/logout', 'logout')->name('logout');
 });
 
+
 Route::resource('task', TaskController::class);
 
-Route::controller(generalcontroller::class)->group(function() {
-    Route::get('/agendar', 'agendar')->name('agendar');
-    Route::get('/contactos', 'contactos')->name('contactos');
+Route::controller(generalcontroller::class)->group(function () {
     Route::get('/puntuacion', 'puntuacion')->name('puntuacion');
+    Route::get('/contactos', 'contactos')->name('contactos');
     Route::get('/skype', 'skype')->name('skype');
 
 });
 
-Route::controller(CitaController::class)->group(function() {
-Route::post('/guardar', 'guardar')->name('guardar');
-Route::delete('/eliminar',  'eliminar')->name('eliminar');
-Route::get('/reagendar', 'reagendar')->name('reagendar');
-Route::get('/citas/pdf', 'citas/pdf')->name('citas.pdf');
-});
+Route::resource('citas', CitaController::class);
 
 
 Route::resource('comments', CommentController::class);
 Route::get('comments/generate-pdf', [CommentController::class, 'generatePDF'])->name('comments.generatePDF');
 Route::get('/comments/pdf', 'PdfController@generatePdf')->name('comments.pdf');
 
+Route::resource('garantias', App\Htpp\Controllers\GarantiaController::class);
+Route::get('/', function () {
+    return view('auth.login');
+});
 
+Route::get('garantias/pdf', [GarantiaHomeController::class, 'pdf'])->name('garantias.pdf');
+Route::resource('garantias', App\Http\Controllers\GarantiaController::class)->middleware('auth');
 
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->name('dashboard');
-
-// Route::get('/info', function () {
-//     return view('info');
-// })->name('info');
-
-// Route::get('/inicio', function () {
-//     return view('inicio');
-// })->name('inicio');
-
-// Route::get('/registro', function () {
-//     return view('registro');
-// })->name('registro');
-
-// Route::get('/clienteindex', function () {
-//     return view('clienteindex');
-// })->name('clienteindex');
-
-// Route::get('/clienteangendar', function () {
-//     return view('clienteangendar');
-// })->name('agendar');
-
-// Route::get('/clientecontac', function () {
-//     return view('clientecontac');
-// })->name('contactos');
-
-// Route::get('/clientecalificacion', function () {
-//     return view('clientecalificacion');
-// })->name('calificacion');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

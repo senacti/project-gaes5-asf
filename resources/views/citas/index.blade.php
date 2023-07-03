@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Contactos</title>
+    <title>Comentarios</title>
     <link rel="stylesheet" href="{{ asset('css/general.css') }}">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -56,7 +56,7 @@
             </li>
             <li>
                 <div class="iocn-link">
-                <a href="{{ url('garantias') }}">
+                    <a href="{{ url('garantias') }}">
                         <i class='bx bx-collection'></i>
                         <span class="link_name">Garantias</span>
                     </a>
@@ -73,63 +73,56 @@
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
-                    <div class="bx bx-log-out" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"></div>
+                    <div class="bx bx-log-out"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"></div>
                 </div>
             </li>
         </ul>
     </div>
-
     <section class="home-section">
         <div class="home-content">
             <i class='bx bx-menu'></i>
-            <span class="text">Contactos</span>
+            <span class="text">Listado de Citas</span>
         </div>
-        <div>
-            <div class="table-responsive">
-                <table class="table">
-                    <div class="alert alert-primary" role="alert">
-                        Lista de Funcionarios
-                    </div>
-                    <thead>
-                        <tr>
-                            <td class="bg-primary">#</td>
-                            <td class="bg-primary">Nombre</td>
-                            <td class="bg-primary">Apellido</td>
-                            <td class="bg-primary">Correo</td>
-                            <td class="bg-primary">Numero</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="bg-primary">1</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@gmail.com</td>
-                            <td>322-256.....</td>
-                        </tr>
-                        <tr>
-                            <td class="bg-primary">2</td>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@gmail.com</td>
-                            <td>311-278.....</td>
-                        </tr>
-                        <tr>
-                            <td class="bg-primary">3</td>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@gmail.com</td>
-                            <td>311-256.....</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
+        <a href="{{ route('citas.create') }}" class="btn btn-success">Crear Cita</a>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Tipo de Servicio</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($citas as $cita)
+                    <tr>
+                        <td>{{ $cita->id }}</td>
+                        <td>{{ $cita->nombre }}</td>
+                        <td>{{ $cita->email }}</td>
+                        <td>{{ $cita->tipo_servicio }}</td>
+                        <td>{{ $cita->fecha }}</td>
+                        <td>{{ $cita->hora }}</td>
+                        <td>
+                            <a href="{{ route('citas.edit', $cita->id) }}" class="btn btn-yellow">Editar</a>
+                            <form action="{{ route('citas.destroy', $cita->id) }}" method="POST"
+                                style="display: inline-block;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     <script>
         let sidebar = document.querySelector(".sidebar");
         let sidebarBtn = document.querySelector(".bx-menu");
-        console.log(sidebarBtn);
         sidebarBtn.addEventListener("click", () => {
             sidebar.classList.toggle("close");
         });

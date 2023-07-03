@@ -28,7 +28,7 @@
             </li>
             <li>
                 <div class="iocn-link">
-                    <a href="{{ route('agendar') }}">
+                    <a href="{{ route('citas.index') }}">
                         <i class='bx bx-collection'></i>
                         <span class="link_name">Agendar</span>
                     </a>
@@ -55,6 +55,14 @@
                 </a>
             </li>
             <li>
+                <div class="iocn-link">
+                    <a href="{{ url('garantias') }}">
+                        <i class='bx bx-collection'></i>
+                        <span class="link_name">Garantias</span>
+                    </a>
+                </div>
+            </li>
+            <li>
                 <div class="profile-details">
                     <div class="profile-content">
                     </div>
@@ -78,14 +86,14 @@
         </div>
         <div class="container">
             <h1>Agendar Servicio</h1>
-            <form action="{{ route('guardar') }}" method="POST">
+            <form action="{{ route('citas.store') }}" method="POST">
                 @csrf
-                <label for="name">Nombre:</label>
-                <input type="text" id="name" name="name" pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+" required>
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+" required>
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
-                <label for="type">Tipo de Servicio:</label>
-                <select id="type" name="type" required>
+                <label for="tipo_servicio">Tipo de Servicio:</label>
+                <select id="tipo_servicio" name="tipo_servicio" required>
                     <option value="">Seleccionar</option>
                     <option value="Mantenimiento preventivo">Mantenimiento preventivo</option>
                     <option value="Cambio de aceite y filtros">Cambio de aceite y filtros</option>
@@ -95,43 +103,13 @@
                     <option value="Servicio de diagnóstico y reparación de averías">Servicio de diagnóstico y reparación
                         de averías</option>
                 </select>
-                <label for="date">Fecha:</label>
-                <input type="date" id="date" name="date" min="{{ date('Y-m-d') }}" required>
-                <label for="time">Hora:</label>
-                <input type="time" id="time" name="time" required>
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fecha" name="fecha" min="{{ date('Y-m-d') }}" required>
+                <label for="hora">Hora:</label>
+                <input type="time" id="hora" name="hora" required>
                 <button type="submit">Agendar</button>
             </form>
-
-            @if (isset($proximasCitas) && count($proximasCitas) > 0)
-                <h2>Próximas citas:</h2>
-                <ul>
-                    @foreach ($proximasCitas as $cita)
-                        <li>
-                            {{ $cita->fecha }} - {{ $cita->hora }}
-
-                            <form action="{{ route('eliminar', ['id' => $cita->id]) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Eliminar</button>
-                            </form>
-
-
-                            <a href="{{ route('reagendar', $cita->id) }}" class="btn btn-primary">Reagendar</a>
-                        </li>
-                    @endforeach
-                </ul>
-            @endif
-
-            @section('content')
-                <div class="container">
-                    <!-- Contenido de tu vista reagendar.blade.php -->
-
-                    <!-- Botón para generar el PDF -->
-                    <a href="{{ route('citas.pdf') }}" class="btn btn-primary">Generar PDF</a>
-                </div>
-            @endsection
         </div>
-
         <script>
             let sidebar = document.querySelector(".sidebar");
             let sidebarBtn = document.querySelector(".bx-menu");

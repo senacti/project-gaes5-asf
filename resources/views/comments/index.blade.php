@@ -74,7 +74,7 @@
             </li>
             <li>
                 <div class="iocn-link">
-                    <a href="{{ route('agendar') }}">
+                    <a href="{{ route('citas.index') }}">
                         <i class='bx bx-collection'></i>
                         <span class="link_name">Agendar</span>
                     </a>
@@ -95,10 +95,18 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('puntuacion') }}">
+                <a href="{{ route('comments.index') }}">
                     <i class='bx bx-history'></i>
                     <span class="link_name">Califiquenos</span>
                 </a>
+            </li>
+            <li>
+                <div class="iocn-link">
+                <a href="{{ url('garantias') }}">
+                        <i class='bx bx-collection'></i>
+                        <span class="link_name">Garantias</span>
+                    </a>
+                </div>
             </li>
             <li>
                 <div class="profile-details">
